@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 
+import { Card, Typography, Divider } from '@components/index';
 import { DrawerScreenList } from '../../../../../../navigation/drawer';
-import { Card, Typography, Divider } from '../../../../../../components';
 
 import Chart from './Chart';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
 
 export default function Bodyweight() {
 	const navigation = useNavigation<DrawerNavigationProp<DrawerScreenList>>();

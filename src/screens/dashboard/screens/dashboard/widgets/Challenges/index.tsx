@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Card, Typography } from '../../../../../../components';
+import { View, TouchableOpacity } from 'react-native';
+
+import { Card, Typography } from '@components/index';
 
 import Chart from './Chart';
 

@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
-
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useFocusEffect } from '@react-navigation/core';
-// import { DrawerScreenProps } from '@react-navigation/drawer';
 
-import { Typography, List, Divider, BottomSheet } from '../../../../components';
-// import { DrawerScreenList } from '../../navigation/drawer';
+import { List, Divider, BottomSheet } from '@components/index';
+
 import EditValue from '../../../../components/EditValue';
 import ListItem, { ListItemProps } from './ListItem';
-
-// type Props = DrawerScreenProps<DrawerScreenList, 'Measurements'>;
 
 export default function Measurements() {
 	const [addValue, setAddValue] = useState<string | null>(null);
@@ -49,7 +44,6 @@ export default function Measurements() {
 							);
 						})}
 					</List>
-					{/* <Button onPress={() => navigation.navigate('Dashboard')} title="Go to dashboard" /> */}
 				</SafeAreaView>
 			</ScrollView>
 

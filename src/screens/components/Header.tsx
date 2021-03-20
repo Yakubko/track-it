@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
 import { StackHeaderProps } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Typography } from '../../components';
+import { Typography } from '@components/index';
 
 interface Props extends StackHeaderProps {}
 

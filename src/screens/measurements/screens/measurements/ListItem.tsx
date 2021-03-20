@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { Typography } from '../../../../components';
+import { Typography } from '@components/index';
 
 export interface ListItemProps {
 	time: string;
