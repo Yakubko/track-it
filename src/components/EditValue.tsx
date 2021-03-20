@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import { theme } from '@constants/theme';
+
 import { Divider, Typography } from './core';
 import Button from './Button';
 
@@ -46,7 +49,7 @@ export default function EditValue({ name }: Props): React.ReactElement {
 
 const styles = StyleSheet.create({
 	root: {
-		backgroundColor: '#33333d',
+		backgroundColor: theme.colors.background,
 		padding: 20,
 		paddingTop: 0,
 		height: 400,

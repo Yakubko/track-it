@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import { theme } from '@constants/theme';
 import { Typography } from '@components/core';
 
 export interface ListItemProps {
@@ -21,7 +22,7 @@ export default function ListItem({ time, name, unite, value, previousValueDiff, 
 					<Typography bold style={{ paddingBottom: 8 }} variant="h6">
 						{name}
 					</Typography>
-					<Typography style={{ color: '#ffcf44' }}>{time}</Typography>
+					<Typography style={{ color: theme.colors.warning }}>{time}</Typography>
 				</View>
 				<View style={{ width: '40%' }}>
 					<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginTop: -10 }}>
@@ -31,7 +32,7 @@ export default function ListItem({ time, name, unite, value, previousValueDiff, 
 						<Typography style={{ paddingLeft: 5 }}>{unite}</Typography>
 					</View>
 					<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginTop: -15 }}>
-						<Typography fontFamily="eczar" style={{ color: '#04b97f' }}>
+						<Typography fontFamily="eczar" style={{ color: theme.colors.success2 }}>
 							{previousValueDiff > 0 && '+'}
 							{previousValueDiff}
 						</Typography>

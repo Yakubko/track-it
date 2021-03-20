@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import { theme } from '@constants/theme';
 
 interface Props {
 	children: React.ReactNode;
@@ -11,9 +13,9 @@ export default function List({ children }: Props) {
 
 const styles = StyleSheet.create({
 	card: {
-		backgroundColor: '#373740',
+		backgroundColor: theme.colors.card,
 
-		shadowColor: '#000',
+		shadowColor: theme.colors.shadowColor,
 		shadowOffset: {
 			width: 0,
 			height: 2,

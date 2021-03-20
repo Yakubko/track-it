@@ -4,9 +4,11 @@ import { Button as ButtonOriginal, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Typography } from './core';
 
+import { theme } from '@constants/theme';
+
 const colors = {
-	success: '#007d51',
-	danger: '#b50000',
+	success: theme.colors.success,
+	danger: theme.colors.danger,
 };
 
 interface Props {

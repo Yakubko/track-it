@@ -1,6 +1,7 @@
-import { BioRhyme_200ExtraLight } from '@expo-google-fonts/dev';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Text, StyleSheet, TextStyle, StyleProp } from 'react-native';
+
+import { theme } from '@constants/theme';
 
 interface Props {
 	variant?: 'h1' | 'h6' | 'body1' | 'button';
@@ -18,7 +19,7 @@ const fontFamilyAliases = {
 
 export default function Typography({ children, fontFamily = 'roboto', bold = false, style = {}, variant }: Props) {
 	const textStyle: StyleProp<TextStyle> = {
-		color: '#ffffff',
+		color: theme.colors.primary,
 		fontFamily: fontFamilyAliases[fontFamily][bold ? 'bold' : 'regular'],
 	};
 

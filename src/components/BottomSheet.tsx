@@ -4,6 +4,8 @@ import { useFocusEffect } from '@react-navigation/core';
 import BottomSheetOriginal from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 
+import { theme } from '@constants/theme';
+
 interface Props {
 	children: React.ReactNode;
 	visible: boolean;
@@ -68,8 +70,8 @@ export default function BottomSheet({ visible, children, onClose }: Props): Reac
 
 const styles = StyleSheet.create({
 	header: {
-		backgroundColor: '#33333d',
-		shadowColor: '#000000',
+		backgroundColor: theme.colors.background,
+		shadowColor: theme.colors.shadowColor,
 		paddingTop: 10,
 		paddingBottom: 15,
 		borderTopLeftRadius: 20,
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
 		width: 40,
 		height: 8,
 		borderRadius: 4,
-		backgroundColor: '#00000040',
+		backgroundColor: `${theme.colors.shadowColor}40`,
 	},
 	overlay: {
 		flex: 1,
