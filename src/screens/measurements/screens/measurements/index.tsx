@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { List, Divider, BottomSheet } from '@components/index';
+import { List, Divider, BottomSheet } from '@components/core';
 
 import EditValue from '../../../../components/EditValue';
 import ListItem, { ListItemProps } from './ListItem';

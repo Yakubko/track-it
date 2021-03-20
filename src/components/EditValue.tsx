@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Divider, Typography } from '.';
+import { Divider, Typography } from './core';
 import Button from './Button';
 
 interface Props {

@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 
-import { Card, Typography, Divider } from '@components/index';
+import { Card, Typography, Divider } from '@components/core';
 import { DrawerScreenList } from '../../../../../../navigation/drawer';
 
 import Chart from './Chart';

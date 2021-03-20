@@ -2,7 +2,7 @@ import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { Button as ButtonOriginal, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Typography } from '.';
+import { Typography } from './core';
 
 const colors = {
 	success: '#007d51',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
-import { Card, Typography } from '@components/index';
+import { Card, Typography } from '@components/core';
 
 import Chart from './Chart';
 
