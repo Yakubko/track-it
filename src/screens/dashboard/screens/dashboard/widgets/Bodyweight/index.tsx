@@ -2,8 +2,8 @@ import * as React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { DrawerScreenList } from '../../../../navigation/drawer';
-import { Card, Typography, Divider } from '../../../../components';
+import { DrawerScreenList } from '../../../../../../navigation/drawer';
+import { Card, Typography, Divider } from '../../../../../../components';
 
 import Chart from './Chart';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
@@ -18,7 +18,7 @@ export default function Bodyweight() {
 	differenceWeight = Math.abs(differenceWeight);
 
 	const handlePress = () => {
-		navigation.navigate('Measurements');
+		navigation.navigate('Measurements', { screen: 'Measurements' });
 	};
 
 	return (

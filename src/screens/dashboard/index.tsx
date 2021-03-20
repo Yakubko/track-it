@@ -1,22 +1,17 @@
 import * as React from 'react';
-import { ScrollView, Button } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Typography } from '../../components';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { Bodyweight, Challenges } from './widgets';
+import Header from '../components/Header';
+import Dashboard from './screens/dashboard';
+import { DashboardScreenList } from './types';
 
-export default function DashboardScreen() {
+const Stack = createStackNavigator<DashboardScreenList>();
+
+export default function DashboardStack() {
 	return (
-		<SafeAreaView style={{ flex: 1, padding: 15 }}>
-			<ScrollView>
-				<Typography variant="h1" fontFamily="roboto" style={{ paddingBottom: 5 }}>
-					Dashboard
-				</Typography>
-
-				<Bodyweight />
-				{/* <Challenges /> */}
-			</ScrollView>
-		</SafeAreaView>
+		<Stack.Navigator initialRouteName="Dashboard" screenOptions={{ header: Header }}>
+			<Stack.Screen name="Dashboard" component={Dashboard} />
+		</Stack.Navigator>
 	);
 }

@@ -11,10 +11,7 @@ export default function Card({ children }: Props) {
 
 const styles = StyleSheet.create({
 	card: {
-		marginLeft: 4,
-		marginRight: 4,
-		marginTop: 10,
-		marginBottom: 10,
+		margin: 15,
 		backgroundColor: '#373740',
 		borderRadius: 8,
 
