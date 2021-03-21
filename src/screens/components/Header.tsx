@@ -47,7 +47,7 @@ export default function Header({ navigation, scene, back }: Props) {
 		>
 			{back ? <Back navigation={navigation} /> : null}
 			<Typography variant="h1" fontFamily="roboto">
-				{scene.route.params?.name ?? scene.descriptor.options.title ?? scene.route.name}
+				{scene.route.params?.headerTitle ?? scene.descriptor.options.title ?? scene.route.name}
 			</Typography>
 		</SafeAreaView>
 	);
