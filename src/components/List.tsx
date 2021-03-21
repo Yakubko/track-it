@@ -1,18 +1,22 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 
 import { theme } from '@constants/theme';
 
 interface Props {
 	children: React.ReactNode;
+
+	style?: StyleProp<ViewStyle>;
 }
 
-export default function List({ children }: Props) {
-	return <View style={styles.card}>{children}</View>;
+export default function List({ children, style = {} }: Props) {
+	const finaleStyle = StyleSheet.compose(styles.list as StyleProp<ViewStyle>, style);
+
+	return <View style={finaleStyle}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
-	card: {
+	list: {
 		backgroundColor: theme.colors.card,
 
 		shadowColor: theme.colors.shadowColor,

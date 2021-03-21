@@ -15,7 +15,7 @@ export default function MeasurementsStack() {
 		<MeasurementFormContextWrapper>
 			<Stack.Navigator initialRouteName="Measurements" screenOptions={{ header: Header }}>
 				<Stack.Screen name="Measurements" component={Measurements} />
-				<Stack.Screen name="History" component={History} />
+				<Stack.Screen name="History" component={History} options={{ header: (props) => <Header {...props} back={true} /> }} />
 			</Stack.Navigator>
 		</MeasurementFormContextWrapper>
 	);
