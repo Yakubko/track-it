@@ -1,10 +1,10 @@
-import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { Button as ButtonOriginal, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Typography } from './core';
 
 import { theme } from '@constants/theme';
+
+import Typography from './Typography';
 
 const colors = {
 	success: theme.colors.success,
@@ -18,8 +18,6 @@ interface Props {
 }
 
 export default function Button({ title, color, onPress }: Props) {
-	// const { colors } = useTheme();
-
 	return (
 		<TouchableOpacity onPress={onPress}>
 			<View

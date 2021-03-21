@@ -3,15 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { theme } from '@constants/theme';
-
-import { Divider, Typography } from './core';
-import Button from './Button';
+import { Button, Divider, Typography } from '@components/core';
 
 interface Props {
 	name: string | null;
 }
 
-export default function EditValue({ name }: Props): React.ReactElement {
+export default function MeasurementForm({ name }: Props): React.ReactElement {
 	const handlePress = () => {};
 
 	return (

@@ -1,13 +1,13 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import DashboardStack from '../../screens/dashboard';
-import MeasurementsStack from '../../screens/measurements';
-import ChallengesStack from '../../screens/challenges';
+import { RootScreenList } from '@constants/navigation';
 
-import { DrawerScreenList } from './types';
+import DashboardStack from '../screens/dashboard';
+import MeasurementsStack from '../screens/measurements';
+import ChallengesStack from '../screens/challenges';
 
-const Drawer = createDrawerNavigator<DrawerScreenList>();
+const Drawer = createDrawerNavigator<RootScreenList>();
 
 export default function DrawerRoutes() {
 	return (

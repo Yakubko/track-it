@@ -1,10 +1,10 @@
 import * as React from 'react';
-
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { ChallengesScreenList } from '@constants/navigation';
 
 import Header from '../components/Header';
 import Challenges from './screens/Challenges';
-import { ChallengesScreenList } from './types';
 
 const Stack = createStackNavigator<ChallengesScreenList>();
 

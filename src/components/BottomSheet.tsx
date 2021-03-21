@@ -9,10 +9,11 @@ import { theme } from '@constants/theme';
 interface Props {
 	children: React.ReactNode;
 	visible: boolean;
+	height: number;
 	onClose: () => void;
 }
 
-export default function BottomSheet({ visible, children, onClose }: Props): React.ReactElement {
+export default function BottomSheet({ visible, children, height, onClose }: Props): React.ReactElement {
 	const [overlay, setOverlay] = useState(visible);
 	const sheetRef = React.useRef<BottomSheetOriginal>(null);
 
@@ -50,7 +51,7 @@ export default function BottomSheet({ visible, children, onClose }: Props): Reac
 					setOverlay(false);
 					onClose();
 				}}
-				snapPoints={[400, 0]}
+				snapPoints={[height, 0]}
 				renderHeader={renderHeader}
 				renderContent={() => children}
 			/>

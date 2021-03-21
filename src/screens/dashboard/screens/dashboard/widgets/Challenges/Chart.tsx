@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { ProgressCircle } from 'react-native-svg-charts';
 
 export default function BodyweightChart() {

@@ -1,9 +1,13 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import { theme } from '@constants/theme';
 import { Typography } from '@components/core';
+
+import { MeasurementsScreenList } from '../../types';
 
 export interface ListItemProps {
 	time: string;
@@ -14,7 +18,13 @@ export interface ListItemProps {
 	handlePress: (name: string) => void;
 }
 
-export default function ListItem({ time, name, unite, value, previousValueDiff, handlePress }: ListItemProps): React.ReactElement {
+interface Props {
+	object: ListItemProps;
+}
+
+export default function ListItem({ object: { time, name, unite, value, previousValueDiff, handlePress } }: Props): React.ReactElement {
+	const navigation = useNavigation<StackNavigationProp<MeasurementsScreenList>>();
+
 	return (
 		<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 			<TouchableOpacity onPress={() => handlePress(name)} style={{ flexDirection: 'row' }}>
@@ -41,9 +51,15 @@ export default function ListItem({ time, name, unite, value, previousValueDiff, 
 				</View>
 			</TouchableOpacity>
 			<View style={{ width: '6%', alignItems: 'center', justifyContent: 'center' }}>
-				<Typography>
-					<MaterialIcons name="history" size={25} />
-				</Typography>
+				<TouchableOpacity
+					onPress={() => {
+						navigation.navigate('History', { name });
+					}}
+				>
+					<Typography>
+						<MaterialIcons name="history" size={25} />
+					</Typography>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

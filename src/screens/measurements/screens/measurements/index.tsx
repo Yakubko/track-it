@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { List, Divider, BottomSheet } from '@components/core';
+import { List, Divider } from '@components/core';
 
-import EditValue from '../../../../components/EditValue';
+import { useMeasurementFormContext } from '../../editValue';
 import ListItem, { ListItemProps } from './ListItem';
 
 export default function Measurements() {
-	const [addValue, setAddValue] = useState<string | null>(null);
+	const [, setA] = useMeasurementFormContext();
 
 	const handlePress = (name: string) => {
-		setAddValue(name);
+		setA((state) => ({ ...state, name }));
 	};
+
 	const measurementsTypes: ListItemProps[] = [
 		{ name: 'Bodyweight', unite: 'kgs', value: 90, previousValueDiff: 0.4, time: '4 months ago', handlePress },
 		{ name: 'Shoulders', unite: 'cm', value: 124, previousValueDiff: 3.0, time: '4 months ago', handlePress },
@@ -31,25 +32,19 @@ export default function Measurements() {
 	];
 
 	return (
-		<>
-			<ScrollView>
-				<SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
-					<List>
-						{measurementsTypes.map((item, index) => {
-							return (
-								<View key={index}>
-									<ListItem {...item} />
-									{index !== measurementsTypes.length ? <Divider /> : null}
-								</View>
-							);
-						})}
-					</List>
-				</SafeAreaView>
-			</ScrollView>
-
-			<BottomSheet visible={!!addValue} onClose={() => setAddValue(null)}>
-				<EditValue name={addValue} />
-			</BottomSheet>
-		</>
+		<ScrollView>
+			<SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
+				<List>
+					{measurementsTypes.map((item, index) => {
+						return (
+							<View key={index}>
+								<ListItem object={item} />
+								{index !== measurementsTypes.length ? <Divider /> : null}
+							</View>
+						);
+					})}
+				</List>
+			</SafeAreaView>
+		</ScrollView>
 	);
 }

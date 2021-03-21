@@ -1,17 +1,22 @@
-import * as React from 'react';
-
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { MeasurementsScreenList } from '@constants/navigation';
+
 import Header from '../components/Header';
+import { MeasurementFormContextWrapper } from './editValue';
 import Measurements from './screens/measurements';
-import { MeasurementsScreenList } from './types';
+import History from './screens/history';
 
 const Stack = createStackNavigator<MeasurementsScreenList>();
 
 export default function MeasurementsStack() {
 	return (
-		<Stack.Navigator initialRouteName="Measurements" screenOptions={{ header: Header }}>
-			<Stack.Screen name="Measurements" component={Measurements} />
-		</Stack.Navigator>
+		<MeasurementFormContextWrapper>
+			<Stack.Navigator initialRouteName="Measurements" screenOptions={{ header: Header }}>
+				<Stack.Screen name="Measurements" component={Measurements} />
+				<Stack.Screen name="History" component={History} />
+			</Stack.Navigator>
+		</MeasurementFormContextWrapper>
 	);
 }

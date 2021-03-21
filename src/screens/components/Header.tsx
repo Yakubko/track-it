@@ -27,7 +27,7 @@ export default function Header(props: Props) {
 			}}
 		>
 			<Typography variant="h1" fontFamily="roboto">
-				{props.scene.descriptor.options.title ?? props.scene.route.name}
+				{props.scene.route.params?.name ?? props.scene.descriptor.options.title ?? props.scene.route.name}
 			</Typography>
 		</SafeAreaView>
 	);
