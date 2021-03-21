@@ -2,12 +2,10 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/core';
-import { StackNavigationProp } from '@react-navigation/stack';
 
 import { theme } from '@constants/theme';
+import { MeasurementsStackProp } from '@constants/navigation';
 import { Typography } from '@components/core';
-
-import { MeasurementsScreenList } from '../../types';
 
 export interface ListItemProps {
 	time: string;
@@ -23,7 +21,7 @@ interface Props {
 }
 
 export default function ListItem({ object: { time, name, unite, value, previousValueDiff, handlePress } }: Props): React.ReactElement {
-	const navigation = useNavigation<StackNavigationProp<MeasurementsScreenList>>();
+	const navigation = useNavigation<MeasurementsStackProp>();
 
 	return (
 		<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
