@@ -37,7 +37,7 @@ export default function History() {
 
 	return (
 		<>
-			<AreaChart data={data} height={180} timeline />
+			<AreaChart data={data} height={180} timeline grid />
 			<ScrollView>
 				<SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
 					<List>

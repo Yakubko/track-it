@@ -29,7 +29,8 @@ export default function Timeline({ from, to }: Props): React.ReactElement {
 				left = from.format(from.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
 				right = to.format(to.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
 
-				center = from.add(Math.round(dayDiff / 2), 'days').format(from.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
+				const middleDate = moment(from).add(Math.round(dayDiff / 2), 'days');
+				center = middleDate.format(middleDate.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
 			}
 		}
 	}
