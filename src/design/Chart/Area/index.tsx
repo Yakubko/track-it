@@ -19,6 +19,9 @@ export default function Area({ data, height = 100, timeline = false }: Props) {
 	const gridMinMax = getGridMinMax(data);
 	const chartData = fixTimelineGaps(data);
 
+	const from: MeasurementData['date'] | undefined = chartData[0]?.date;
+	const to: MeasurementData['date'] | undefined = chartData.length > 0 ? chartData[chartData.length - 1].date : undefined;
+
 	return (
 		<View style={{ height }}>
 			<AreaChart
@@ -32,7 +35,7 @@ export default function Area({ data, height = 100, timeline = false }: Props) {
 				<Gradient min={gridMinMax.min} max={gridMinMax.max} />
 			</AreaChart>
 
-			{timeline ? <Timeline /> : null}
+			{timeline ? <Timeline from={from} to={to} /> : null}
 		</View>
 	);
 }

@@ -7,8 +7,6 @@ import { RootScreenProps } from '@constants/navigation';
 import { Card, Typography, Divider, AreaChart } from '@design/core';
 import { measurement } from '@constants/data';
 
-import Chart from './Chart';
-
 export default function Bodyweight() {
 	const navigation = useNavigation<RootScreenProps['navigation']>();
 	const data = measurement.data.bodyweight.map((item) => item.value);
@@ -24,7 +22,7 @@ export default function Bodyweight() {
 
 	return (
 		<Card>
-			<AreaChart data={measurement.data.bodyweight} />
+			<AreaChart data={measurement.data.bodyweight} timeline />
 			<TouchableOpacity onPress={handlePress}>
 				<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 					<View style={{ width: '50%' }}>
