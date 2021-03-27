@@ -2,7 +2,7 @@ import React from 'react';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Eczar_400Regular, Eczar_600SemiBold, RobotoCondensed_400Regular, RobotoCondensed_700Bold } from '@expo-google-fonts/dev';
 
-import AppNavigation from './navigation';
+import AppDrawer from './drawer';
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
@@ -16,5 +16,5 @@ export default function App() {
 		return <AppLoading />;
 	}
 
-	return <AppNavigation />;
+	return <AppDrawer />;
 }

@@ -5,14 +5,15 @@ import { useNavigation } from '@react-navigation/native';
 import { theme } from '@constants/theme';
 import { RootScreenProps } from '@constants/navigation';
 import { Card, Typography, Divider } from '@components/core';
+import { measurement } from '@constants/data';
 
 import Chart from './Chart';
 
 export default function Bodyweight() {
 	const navigation = useNavigation<RootScreenProps['navigation']>();
-	const data = [85, 85, 86, 87, 85, 88, 88, 90.1, 90.5];
+	const data = measurement.data.bodyweight.map((item) => item.value);
 
-	const [lastWeight, previousWeight] = [data[data.length - 1], data[data.length - 2]];
+	const [lastWeight, previousWeight] = [data[0], data[1]];
 	let differenceWeight = lastWeight - previousWeight;
 	const direction = differenceWeight > 0 ? 'UP' : 'DOWN';
 	differenceWeight = Math.abs(differenceWeight);

@@ -6,7 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { theme } from '@constants/theme';
 import DrawerRoutes from './Routes';
 
-export default function AppNavigation() {
+export default function AppDrawer() {
 	return (
 		<>
 			<StatusBar style="light" />
