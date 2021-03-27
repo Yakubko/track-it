@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import moment from 'moment';
 
 import Typography from '@design/Typography';
@@ -11,8 +11,6 @@ interface Props {
 }
 
 export default function Timeline({ from, to }: Props): React.ReactElement {
-	console.log({ from, to });
-
 	let left = null;
 	let center = null;
 	let right = null;
@@ -42,17 +40,15 @@ export default function Timeline({ from, to }: Props): React.ReactElement {
 
 	return (
 		<View style={{ padding: 5, paddingTop: 10, paddingBottom: 10, flexDirection: 'row' }}>
-			<TouchableOpacity onPress={() => {}} style={{ flexDirection: 'row' }}>
-				<View style={{ width: '30%' }}>
-					<Typography>{left}</Typography>
-				</View>
-				<View style={{ width: '40%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-					<Typography>{center}</Typography>
-				</View>
-				<View style={{ width: '30%', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
-					<Typography>{right}</Typography>
-				</View>
-			</TouchableOpacity>
+			<View style={{ width: '30%' }}>
+				<Typography>{left}</Typography>
+			</View>
+			<View style={{ width: '40%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+				<Typography>{center}</Typography>
+			</View>
+			<View style={{ width: '30%', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+				<Typography>{right}</Typography>
+			</View>
 		</View>
 	);
 }
