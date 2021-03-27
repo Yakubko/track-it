@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { DashboardParamList } from '@constants/navigation';
 
-import Header from '../components/Header';
+import Header from '@components/Header';
 import Dashboard from './screens/dashboard';
 
 const Stack = createStackNavigator<DashboardParamList>();
