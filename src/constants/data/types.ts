@@ -1,3 +1,5 @@
+import { Moment } from 'moment';
+
 export interface Root {
 	measurements: {
 		types: MeasurementType[];
@@ -27,6 +29,6 @@ export interface MeasurementType {
 
 export interface MeasurementData {
 	id: number;
-	date: string;
+	date: Moment;
 	value: number;
 }

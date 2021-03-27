@@ -1,17 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import moment from 'moment';
 
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { MeasurementType } from '@constants/data';
+import { MeasurementData, MeasurementType } from '@constants/data';
 import { Typography } from '@design/core';
 
 export interface ListItemObject extends MeasurementType {
-	value: number | undefined;
-	previousValueDiff: number | undefined;
-	time: string | undefined;
+	value?: number;
+	previousValueDiff?: number;
+	time?: MeasurementData['date'];
 }
 
 interface Props {
@@ -24,7 +23,7 @@ export default function ListItem({ object, onPress, navigation }: Props): React.
 	const { name, title, time, unite, value, previousValueDiff } = object;
 
 	const renderTime = time ? (
-		<Typography style={{ color: theme.colors.warning }}>{time ? moment(time, 'YYYY-MM-DD').fromNow() : '-'}</Typography>
+		<Typography style={{ color: theme.colors.warning }}>{time ? time.fromNow() : '-'}</Typography>
 	) : (
 		<Typography>None data</Typography>
 	);
@@ -76,7 +75,7 @@ export default function ListItem({ object, onPress, navigation }: Props): React.
 					navigation.navigate('History', { headerTitle: title, measurementName: name });
 				}}
 			>
-				<View style={{ opacity: value ? 1 : 0.2, height: 48, alignItems: 'center', justifyContent: 'center' }}>
+				<View style={{ opacity: value ? 1 : 0.2, height: 48, width: 45, alignItems: 'flex-start', justifyContent: 'center' }}>
 					<MaterialIcons color={theme.colors.primary} name="history" size={25} />
 				</View>
 			</TouchableOpacity>

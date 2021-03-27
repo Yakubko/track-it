@@ -24,6 +24,8 @@ export function getGridMinMax(data: MeasurementData[]): MinMax {
 export function fixTimelineGaps(data: MeasurementData[]): MeasurementData[] {
 	const output = [...data];
 
+	// console.log(output);
+
 	if (output.length === 1) {
 		output.push(output[0]);
 	} else if (output.length > 1) {

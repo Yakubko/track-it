@@ -32,14 +32,13 @@ export default function ListItem({ object, onPress }: Props): React.ReactElement
 	}
 
 	const now = moment();
-	const momentDate = moment(date, 'YYYY-MM-DD');
 
 	return (
 		<View style={{ padding: 8, paddingBottom: 0, paddingLeft: 15, paddingRight: 15, flexDirection: 'row' }}>
 			<TouchableOpacity onPress={() => onPress(object)} style={{ flexDirection: 'row' }}>
 				<View style={{ width: '50%', paddingTop: 10 }}>
 					<Typography bold variant="h6">
-						{momentDate.format(momentDate.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY')}
+						{date.format(date.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY')}
 					</Typography>
 				</View>
 				<View style={{ width: '50%' }}>

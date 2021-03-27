@@ -19,21 +19,17 @@ export default function Timeline({ from, to }: Props): React.ReactElement {
 		const now = moment();
 
 		if (from === to) {
-			const momentDate = moment(from, 'YYYY-MM-DD');
-			center = momentDate.format(momentDate.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
+			center = from.format(from.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
 		} else {
-			const momentFrom = moment(from, 'YYYY-MM-DD');
-			const momentTo = moment(to, 'YYYY-MM-DD');
-
-			const dayDiff = momentTo.diff(momentFrom, 'days');
+			const dayDiff = to.diff(from, 'days');
 			if (dayDiff === 1) {
-				left = momentFrom.format(momentFrom.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
-				right = momentTo.format(momentTo.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
+				left = from.format(from.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
+				right = to.format(to.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY');
 			} else {
-				left = momentFrom.format(momentFrom.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
-				right = momentTo.format(momentTo.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
+				left = from.format(from.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
+				right = to.format(to.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
 
-				center = momentFrom.add(Math.round(dayDiff / 2), 'days').format(momentFrom.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
+				center = from.add(Math.round(dayDiff / 2), 'days').format(from.year() === now.year() ? 'MMMM DD' : 'MMM DD, YYYY');
 			}
 		}
 	}
