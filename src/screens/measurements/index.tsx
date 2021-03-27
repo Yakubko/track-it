@@ -1,14 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MeasurementsScreenList } from '@constants/navigation';
+import { MeasurementsParamList } from '@constants/navigation';
 
 import Header from '../components/Header';
 import { MeasurementFormContextWrapper } from './editValue';
 import Measurements from './screens/measurements';
 import History from './screens/history';
 
-const Stack = createStackNavigator<MeasurementsScreenList>();
+const Stack = createStackNavigator<MeasurementsParamList>();
 
 export default function MeasurementsStack() {
 	return (

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { DashboardScreenList } from '@constants/navigation';
+import { DashboardParamList } from '@constants/navigation';
 
 import Header from '../components/Header';
 import Dashboard from './screens/dashboard';
 
-const Stack = createStackNavigator<DashboardScreenList>();
+const Stack = createStackNavigator<DashboardParamList>();
 
 export default function DashboardStack() {
 	return (

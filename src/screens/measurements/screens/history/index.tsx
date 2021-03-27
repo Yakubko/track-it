@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/core';
+import { useRoute } from '@react-navigation/core';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Divider, Typography, List } from '@components/core';
@@ -9,10 +9,10 @@ import { measurement, MeasurementType } from '@constants/data';
 import Chart from './Chart';
 import ListItem, { ListItemObject } from './ListItem';
 import { useMeasurementFormContext } from '../../editValue';
-import { MeasurementsScreenList } from '@constants/navigation';
+import { MeasurementsScreenProps } from '@constants/navigation';
 
 export default function History() {
-	const route = useRoute<RouteProp<MeasurementsScreenList, 'History'>>();
+	const route = useRoute<MeasurementsScreenProps<'History'>['route']>();
 	const [, setA] = useMeasurementFormContext();
 	const type = measurement.types.find((item) => item.name === route.params?.measurementName);
 	const data = measurement.data[route.params.measurementName as MeasurementType['name']] ?? [];

@@ -34,6 +34,4 @@ export default function Button({ title, color, onPress }: Props) {
 			</View>
 		</TouchableOpacity>
 	);
-
-	// return <ButtonOriginal title={title} onPress={onPress} color="" />;
 }

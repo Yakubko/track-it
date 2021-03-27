@@ -1,36 +1,27 @@
-import { CompositeNavigationProp } from '@react-navigation/native';
 import { NavigatorScreenParams } from '@react-navigation/core';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+import { StackScreenProps } from '@react-navigation/stack';
 import { MeasurementType } from './data';
 
-export type DashboardScreenList = {
+export type DashboardParamList = {
 	Dashboard: undefined;
 };
-export type DashboardStackProp = StackNavigationProp<MeasurementsScreenList>;
+export type DashboardNavigationProp = StackScreenProps<DashboardParamList>;
 
-export type ChallengesScreenList = {
+export type ChallengesParamList = {
 	Challenges: undefined;
 };
-export type ChallengesStackProp = StackNavigationProp<MeasurementsScreenList>;
+export type ChallengesNavigationProp = StackScreenProps<ChallengesParamList>;
 
-export type MeasurementsScreenList = {
+export type MeasurementsParamList = {
 	Measurements: undefined;
 	History: { headerTitle: string; measurementName: MeasurementType['name'] };
 };
-export type MeasurementsStackProp = StackNavigationProp<MeasurementsScreenList>;
+export type MeasurementsScreenProps<RouteName extends keyof MeasurementsParamList> = StackScreenProps<MeasurementsParamList, RouteName>;
 
-export type RootScreenList = {
-	Dashboard: NavigatorScreenParams<DashboardScreenList>;
-	Measurements: NavigatorScreenParams<MeasurementsScreenList>;
-	Challenges: NavigatorScreenParams<ChallengesScreenList>;
+export type RootParamList = {
+	Dashboard: NavigatorScreenParams<DashboardParamList>;
+	Measurements: NavigatorScreenParams<MeasurementsParamList>;
+	Challenges: NavigatorScreenParams<ChallengesParamList>;
 };
-export type RootDrawerProp = DrawerNavigationProp<RootScreenList>;
-
-// WIP
-// type MeasurementsStackProps = StackScreenProps<MeasurementsScreenList>;
-
-// type ProfileScreenNavigationProp = CompositeNavigationProp<
-// 	DrawerNavigationProp<RootScreenList, 'Measurements'>,
-// 	StackNavigationProp<MeasurementsScreenList>
-// >;
+export type RootScreenProps = DrawerScreenProps<RootParamList>;

@@ -6,8 +6,6 @@ import { Card, Typography } from '@components/core';
 import Chart from './Chart';
 
 export default function Challenges() {
-	const data = [85, 85, 86, 87, 85, 88, 88, 90.1, 90.5];
-
 	const handlePress = () => {
 		// navigation.navigate('Bodyweight');
 	};

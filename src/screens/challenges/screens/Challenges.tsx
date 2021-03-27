@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ScrollView, Button } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
-import { RootDrawerProp } from '@constants/navigation';
+import { RootScreenProps } from '@constants/navigation';
 
 export default function Challenges() {
-	const navigation = useNavigation<RootDrawerProp>();
+	const navigation = useNavigation<RootScreenProps['navigation']>();
 
 	return (
 		<ScrollView>

@@ -5,13 +5,13 @@ import { useNavigation } from '@react-navigation/core';
 
 import { List, Divider } from '@components/core';
 import { measurement } from '@constants/data';
-import { MeasurementsStackProp } from '@constants/navigation';
+import { MeasurementsScreenProps } from '@constants/navigation';
 
 import { useMeasurementFormContext } from '../../editValue';
 import ListItem, { ListItemObject } from './ListItem';
 
 export default function Measurements() {
-	const navigation = useNavigation<MeasurementsStackProp>();
+	const navigation = useNavigation<MeasurementsScreenProps<'Measurements'>['navigation']>();
 	const [, setA] = useMeasurementFormContext();
 
 	const handlePress = ({ title }: ListItemObject) => {

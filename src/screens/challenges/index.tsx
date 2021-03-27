@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { ChallengesScreenList } from '@constants/navigation';
+import { ChallengesParamList } from '@constants/navigation';
 
 import Header from '../components/Header';
 import Challenges from './screens/Challenges';
 
-const Stack = createStackNavigator<ChallengesScreenList>();
+const Stack = createStackNavigator<ChallengesParamList>();
 
 export default function ChallengesStack() {
 	return (

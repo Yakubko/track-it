@@ -3,13 +3,13 @@ import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '@constants/theme';
-import { RootDrawerProp } from '@constants/navigation';
+import { RootScreenProps } from '@constants/navigation';
 import { Card, Typography, Divider } from '@components/core';
 
 import Chart from './Chart';
 
 export default function Bodyweight() {
-	const navigation = useNavigation<RootDrawerProp>();
+	const navigation = useNavigation<RootScreenProps['navigation']>();
 	const data = [85, 85, 86, 87, 85, 88, 88, 90.1, 90.5];
 
 	const [lastWeight, previousWeight] = [data[data.length - 1], data[data.length - 2]];

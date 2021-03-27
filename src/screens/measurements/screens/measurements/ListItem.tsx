@@ -4,7 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 
 import { theme } from '@constants/theme';
-import { MeasurementsStackProp } from '@constants/navigation';
+import { MeasurementsScreenProps } from '@constants/navigation';
 import { MeasurementType } from '@constants/data';
 import { Typography } from '@components/core';
 
@@ -16,7 +16,7 @@ export interface ListItemObject extends MeasurementType {
 
 interface Props {
 	object: ListItemObject;
-	navigation: MeasurementsStackProp;
+	navigation: MeasurementsScreenProps<'Measurements'>['navigation'];
 	onPress: (object: ListItemObject) => void;
 }
 
