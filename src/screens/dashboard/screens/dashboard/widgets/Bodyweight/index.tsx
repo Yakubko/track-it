@@ -22,7 +22,7 @@ export default function Bodyweight() {
 
 	return (
 		<Card>
-			<AreaChart data={measurement.data.bodyweight} timeline />
+			<AreaChart data={measurement.data.bodyweight} />
 			<TouchableOpacity onPress={handlePress}>
 				<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 					<View style={{ width: '50%' }}>

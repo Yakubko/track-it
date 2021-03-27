@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Animated, TouchableOpacity, View } from 'react-native';
 import { StackHeaderProps, StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ParamListBase } from '@react-navigation/routers';
@@ -27,28 +27,38 @@ interface Props extends StackHeaderProps {
 }
 
 export default function Header({ navigation, scene, back }: Props) {
-	return (
-		<SafeAreaView
-			edges={['top']}
-			style={{
-				flexDirection: 'row',
-				padding: 10,
-				paddingLeft: 15,
+	const progress = Animated.add(scene.progress.current as any, scene.progress.next || 0);
 
-				width: '100%',
-				backgroundColor: theme.colors.background,
-				shadowColor: theme.colors.shadowColor,
-				shadowOffset: {
-					width: 0,
-					height: 2,
-				},
-				shadowOpacity: 0.25,
-			}}
-		>
-			{back ? <Back navigation={navigation} /> : null}
-			<Typography variant="h1" fontFamily="roboto">
-				{scene.route.params?.headerTitle ?? scene.descriptor.options.title ?? scene.route.name}
-			</Typography>
-		</SafeAreaView>
+	const opacity = progress.interpolate({
+		inputRange: [0, 1, 2],
+		outputRange: [0, 1, 0],
+	});
+
+	return (
+		<Animated.View style={{ opacity }}>
+			<SafeAreaView
+				edges={['top']}
+				style={{
+					flexDirection: 'row',
+					padding: 10,
+					paddingLeft: 15,
+
+					width: '100%',
+					backgroundColor: theme.colors.background,
+					shadowColor: theme.colors.shadowColor,
+					shadowOffset: {
+						width: 0,
+						height: 2,
+					},
+					shadowOpacity: 0.25,
+				}}
+			>
+				{back ? <Back navigation={navigation} /> : null}
+
+				<Typography variant="h1" fontFamily="roboto">
+					{scene.route.params?.headerTitle ?? scene.descriptor.options.title ?? scene.route.name}
+				</Typography>
+			</SafeAreaView>
+		</Animated.View>
 	);
 }

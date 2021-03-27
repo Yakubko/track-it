@@ -70,18 +70,16 @@ export default function ListItem({ object, onPress, navigation }: Props): React.
 					</View>
 				</View>
 			</TouchableOpacity>
-			<View style={{ width: '6%', alignItems: 'center', justifyContent: 'center' }}>
-				<TouchableOpacity
-					disabled={!value}
-					onPress={() => {
-						navigation.navigate('History', { headerTitle: title, measurementName: name });
-					}}
-				>
-					<Typography style={{ opacity: value ? 1 : 0.2 }}>
-						<MaterialIcons name="history" size={25} />
-					</Typography>
-				</TouchableOpacity>
-			</View>
+			<TouchableOpacity
+				disabled={!value}
+				onPress={() => {
+					navigation.navigate('History', { headerTitle: title, measurementName: name });
+				}}
+			>
+				<View style={{ opacity: value ? 1 : 0.2, height: 48, alignItems: 'center', justifyContent: 'center' }}>
+					<MaterialIcons color={theme.colors.primary} name="history" size={25} />
+				</View>
+			</TouchableOpacity>
 		</View>
 	);
 }
