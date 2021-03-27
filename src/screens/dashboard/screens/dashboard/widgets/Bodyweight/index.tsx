@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '@constants/theme';
 import { RootScreenProps } from '@constants/navigation';
-import { Card, Typography, Divider } from '@components/core';
+import { Card, Typography, Divider, AreaChart } from '@design/core';
 import { measurement } from '@constants/data';
 
 import Chart from './Chart';
@@ -24,7 +24,7 @@ export default function Bodyweight() {
 
 	return (
 		<Card>
-			<Chart data={data} />
+			<AreaChart data={measurement.data.bodyweight} />
 			<TouchableOpacity onPress={handlePress}>
 				<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 					<View style={{ width: '50%' }}>

@@ -1,6 +1,6 @@
 import React, { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
 
-import BottomSheet from '@components/BottomSheet';
+import BottomSheet from '@design/BottomSheet';
 
 import MeasurementForm from './Form';
 

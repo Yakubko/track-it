@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { theme } from '@constants/theme';
-import { Button, Divider, Typography } from '@components/core';
+import { Button, Divider, Typography } from '@design/core';
 
 interface Props {
 	name: string | null;

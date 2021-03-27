@@ -3,10 +3,9 @@ import { ScrollView, View } from 'react-native';
 import { useRoute } from '@react-navigation/core';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Divider, Typography, List } from '@components/core';
+import { Divider, Typography, List, AreaChart } from '@design/core';
 import { measurement, MeasurementType } from '@constants/data';
 
-import Chart from './Chart';
 import ListItem, { ListItemObject } from './ListItem';
 import { useMeasurementFormContext } from '../../editValue';
 import { MeasurementsScreenProps } from '@constants/navigation';
@@ -38,9 +37,7 @@ export default function History() {
 
 	return (
 		<>
-			<View style={{ height: 180 }}>
-				<Chart data={data} />
-			</View>
+			<AreaChart data={data} height={180} timeline />
 			<ScrollView>
 				<SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
 					<List>

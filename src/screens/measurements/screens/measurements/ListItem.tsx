@@ -6,7 +6,7 @@ import moment from 'moment';
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
 import { MeasurementType } from '@constants/data';
-import { Typography } from '@components/core';
+import { Typography } from '@design/core';
 
 export interface ListItemObject extends MeasurementType {
 	value: number | undefined;

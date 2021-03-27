@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/core';
 
-import { List, Divider } from '@components/core';
+import { List, Divider } from '@design/core';
 import { measurement } from '@constants/data';
 import { MeasurementsScreenProps } from '@constants/navigation';
 

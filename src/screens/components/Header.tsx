@@ -6,7 +6,7 @@ import { ParamListBase } from '@react-navigation/routers';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { theme } from '@constants/theme';
-import { Typography } from '@components/core';
+import { Typography } from '@design/core';
 
 interface BackProps {
 	navigation: StackNavigationProp<ParamListBase>;

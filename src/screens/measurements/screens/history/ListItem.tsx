@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { theme } from '@constants/theme';
 import { MeasurementData, MeasurementType } from '@constants/data';
-import { Typography } from '@components/core';
+import { Typography } from '@design/core';
 
 export interface ListItemObject extends MeasurementData {
 	previousValueDiff: number | undefined;

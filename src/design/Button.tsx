@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { theme } from '@constants/theme';
 
-import Typography from './Typography';
+import Typography from '@design/Typography';
 
 const colors = {
 	success: theme.colors.success,
