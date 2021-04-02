@@ -9,13 +9,22 @@ const MeasurementValueContext = createContext<MeasurementsContext>({ showMeasure
 
 export function MeasurementValueProvider({ children }: ProviderProps): React.ReactElement {
 	const [measurementValue, setMeasurementValue] = useState<MeasurementValue>(null);
+	const [snapTo, setSnapTo] = useState<number>(0);
+	const heights = [400, 490];
 
 	return (
 		<MeasurementValueContext.Provider value={{ showMeasurement: setMeasurementValue }}>
 			{children}
 			{measurementValue ? (
-				<BottomSheet visible height={400} onClose={() => setMeasurementValue(null)}>
-					<MeasurementForm object={measurementValue} />
+				<BottomSheet
+					snapTo={snapTo}
+					heights={heights}
+					onClose={() => {
+						setSnapTo(0);
+						setMeasurementValue(null);
+					}}
+				>
+					<MeasurementForm object={measurementValue} setSnapTo={setSnapTo} />
 				</BottomSheet>
 			) : null}
 		</MeasurementValueContext.Provider>

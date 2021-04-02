@@ -8,13 +8,13 @@ import { theme } from '@constants/theme';
 
 interface Props {
 	children: React.ReactNode;
-	visible: boolean;
-	height: number;
+	snapTo: number;
+	heights: number[];
 	onClose: () => void;
 }
 
-export default function BottomSheet({ visible, children, height, onClose }: Props): React.ReactElement {
-	const [overlay, setOverlay] = useState(visible);
+export default function BottomSheet({ snapTo, children, heights, onClose }: Props): React.ReactElement {
+	const [overlay, setOverlay] = useState(snapTo !== heights.length);
 	const sheetRef = React.useRef<BottomSheetOriginal>(null);
 
 	useFocusEffect(
@@ -26,8 +26,8 @@ export default function BottomSheet({ visible, children, height, onClose }: Prop
 	);
 
 	useEffect(() => {
-		sheetRef.current?.snapTo(visible ? 0 : 1);
-	}, [visible]);
+		sheetRef.current?.snapTo(snapTo);
+	}, [snapTo]);
 
 	const fall = new Animated.Value(0.4);
 
@@ -42,16 +42,19 @@ export default function BottomSheet({ visible, children, height, onClose }: Prop
 	return (
 		<>
 			<BottomSheetOriginal
-				enabledInnerScrolling={false}
+				enabledBottomInitialAnimation
+				enabledManualSnapping={false}
+				enabledContentTapInteraction={false}
+				enabledContentGestureInteraction={false}
 				ref={sheetRef}
-				initialSnap={0}
+				initialSnap={overlay ? 0 : heights.length}
 				callbackNode={fall}
 				onOpenStart={() => setOverlay(true)}
 				onCloseEnd={() => {
 					setOverlay(false);
 					onClose();
 				}}
-				snapPoints={[height, 0]}
+				snapPoints={[...heights, 0]}
 				renderHeader={renderHeader}
 				renderContent={() => children}
 			/>

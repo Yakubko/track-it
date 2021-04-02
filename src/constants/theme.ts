@@ -9,6 +9,7 @@ export const theme = {
 		shadowColor: '#000000',
 		card: '#373740',
 		divider: '#424242',
+		grey: '#5f6366',
 
 		text: '#ffffff',
 		primary: '#ffffff',
