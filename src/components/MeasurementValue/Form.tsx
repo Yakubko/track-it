@@ -1,21 +1,32 @@
 import React from 'react';
+import moment from 'moment';
 import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { theme } from '@constants/theme';
+import { measurement } from '@constants/data';
 import { Button, Divider, Typography } from '@design/core';
 
+import { MeasurementValue } from './types';
+
 interface Props {
-	name: string | null;
+	object: NonNullable<MeasurementValue>;
 }
 
-export default function MeasurementForm({ name }: Props): React.ReactElement {
-	const handlePress = () => {};
+export default function MeasurementForm({ object }: Props): React.ReactElement {
+	const { type, id, value, date } = object;
+	const typeObject = measurement.types.find((item) => item.name === type);
+	if (!typeObject) {
+		return <Typography>Error unknown type {type}</Typography>;
+	}
+
+	const now = moment();
+	const selectDate = date ?? now;
 
 	return (
 		<View style={styles.root}>
 			<Typography variant="h1" bold style={{ paddingBottom: 5 }}>
-				{name}
+				{typeObject.title}
 			</Typography>
 			<Typography variant="body1" style={{ paddingBottom: 25 }}>
 				Select date and chose a new value
@@ -24,14 +35,20 @@ export default function MeasurementForm({ name }: Props): React.ReactElement {
 			<TouchableOpacity onPress={() => {}}>
 				<View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 10, paddingBottom: 10 }}>
 					<Typography variant="h6" bold>
-						TODAY
+						{selectDate.calendar(null, {
+							sameDay: '[TODAY]',
+							lastDay: '[Yesterday]',
+							sameElse: function () {
+								return selectDate.year() === now.year() ? 'MMMM DD' : 'MMMM DD, YYYY';
+							},
+						})}
 					</Typography>
 				</View>
 			</TouchableOpacity>
 			<Divider />
 			<View style={{ alignItems: 'center', justifyContent: 'center' }}>
 				<Typography fontFamily="eczar" style={{ fontSize: 90 }}>
-					90.6
+					{value}
 				</Typography>
 			</View>
 

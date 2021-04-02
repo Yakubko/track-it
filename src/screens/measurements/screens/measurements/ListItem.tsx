@@ -16,7 +16,7 @@ export interface ListItemObject extends MeasurementType {
 interface Props {
 	object: ListItemObject;
 	navigation: MeasurementsScreenProps<'Measurements'>['navigation'];
-	onPress: (object: ListItemObject) => void;
+	onPress: () => void;
 }
 
 export default function ListItem({ object, onPress, navigation }: Props): React.ReactElement {
@@ -51,7 +51,7 @@ export default function ListItem({ object, onPress, navigation }: Props): React.
 
 	return (
 		<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
-			<TouchableOpacity onPress={() => onPress(object)} style={{ flexDirection: 'row' }}>
+			<TouchableOpacity onPress={() => onPress()} style={{ flexDirection: 'row' }}>
 				<View style={{ width: '50%' }}>
 					<Typography bold style={{ paddingBottom: 8 }} variant="h6">
 						{title}

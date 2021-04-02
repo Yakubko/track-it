@@ -29,7 +29,7 @@ export default function BottomSheet({ visible, children, height, onClose }: Prop
 		sheetRef.current?.snapTo(visible ? 0 : 1);
 	}, [visible]);
 
-	const fall = new Animated.Value(1);
+	const fall = new Animated.Value(0.4);
 
 	const renderHeader = () => (
 		<View style={styles.header}>

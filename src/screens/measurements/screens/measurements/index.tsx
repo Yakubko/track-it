@@ -4,18 +4,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/core';
 
 import { List, Divider } from '@design/core';
-import { measurement } from '@constants/data';
+import { measurement, MeasurementType } from '@constants/data';
+import { useMeasurementValue } from '@components/core';
 import { MeasurementsScreenProps } from '@constants/navigation';
 
-import { useMeasurementFormContext } from '../../editValue';
 import ListItem, { ListItemObject } from './ListItem';
 
 export default function Measurements() {
 	const navigation = useNavigation<MeasurementsScreenProps<'Measurements'>['navigation']>();
-	const [, setA] = useMeasurementFormContext();
+	const { showMeasurement } = useMeasurementValue();
 
-	const handlePress = ({ title }: ListItemObject) => {
-		setA((state) => ({ ...state, name: title }));
+	const handlePress = (item: ListItemObject) => {
+		showMeasurement({ type: item.name, value: item.value });
 	};
 
 	const items: ListItemObject[] = measurement.types.map((item) => {
@@ -41,7 +41,7 @@ export default function Measurements() {
 					{items.map((item, index) => {
 						return (
 							<View key={item.name}>
-								<ListItem object={item} onPress={handlePress} navigation={navigation} />
+								<ListItem object={item} onPress={() => handlePress(item)} navigation={navigation} />
 								{index !== items.length ? <Divider /> : null}
 							</View>
 						);

@@ -4,15 +4,15 @@ import { useRoute } from '@react-navigation/core';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Divider, Typography, List, AreaChart } from '@design/core';
+import { useMeasurementValue } from '@components/core';
 import { measurement } from '@constants/data';
 
 import ListItem, { ListItemObject } from './ListItem';
-import { useMeasurementFormContext } from '../../editValue';
 import { MeasurementsScreenProps } from '@constants/navigation';
 
 export default function History() {
 	const route = useRoute<MeasurementsScreenProps<'History'>['route']>();
-	const [, setA] = useMeasurementFormContext();
+	const { showMeasurement } = useMeasurementValue();
 	const type = measurement.types.find((item) => item.name === route.params?.measurementName);
 	const data = measurement.data[route.params.measurementName] ?? [];
 
@@ -20,8 +20,8 @@ export default function History() {
 		return <Typography>Error unknown type {route.params.measurementName}</Typography>;
 	}
 
-	const handlePress = ({ id }: ListItemObject) => {
-		setA((state) => ({ ...state, name: id }));
+	const handlePress = (item: ListItemObject) => {
+		showMeasurement({ ...item, type: type.name });
 	};
 
 	const items: ListItemObject[] = data.map((item, index) => {
