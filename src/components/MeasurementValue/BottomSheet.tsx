@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import moment from 'moment';
 
 import { BottomSheet as BottomSheetDesign, Divider, Typography } from '@design/core';
-import { useSelector } from '@store/core';
+import { useSelector, useDispatch, addMeasurementValue } from '@store/core';
 
 import { MeasurementValue, MeasurementFormObject } from './types';
 import MeasurementForm from './Form';
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export default function BottomSheet({ measurementValue, setMeasurementValue }: Props): React.ReactElement {
+	const dispatch = useDispatch();
 	const types = useSelector((state) => state.types);
 
 	const [snapTo, setSnapTo] = useState<number>(0);
@@ -26,11 +27,12 @@ export default function BottomSheet({ measurementValue, setMeasurementValue }: P
 	const object: MeasurementFormObject = {
 		id: measurementValue.id,
 		date: measurementValue.date ?? moment(),
-		value: measurementValue.value,
+		value: measurementValue.value ?? 0,
 	};
 
 	const handleSave = (newValue: MeasurementFormObject) => {
-		console.log(newValue);
+		dispatch(addMeasurementValue(typeObject.name, newValue));
+		setMeasurementValue(null);
 	};
 
 	const handleDelete = (value: MeasurementFormObject) => {

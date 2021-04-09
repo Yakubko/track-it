@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Header, MeasurementValueProvider } from '@components/core';
 import { MeasurementsParamList } from '@constants/navigation';
 
-import List, { HeaderAdd } from './screens/list';
+import List from './screens/list'; // , { HeaderAdd }
 import History from './screens/history';
 import Measurements, { HeaderEdit } from './screens/measurements';
 
@@ -20,7 +20,8 @@ export default function MeasurementsStack() {
 					options={{ header: (props) => <Header {...props} menu right={() => <HeaderEdit />} /> }}
 				/>
 				<Stack.Screen name="History" component={History} options={{ header: (props) => <Header {...props} back /> }} />
-				<Stack.Screen name="List" component={List} options={{ header: (props) => <Header {...props} back right={() => <HeaderAdd />} /> }} />
+				<Stack.Screen name="List" component={List} options={{ header: (props) => <Header {...props} back /> }} />
+				{/* right={() => <HeaderAdd />} */}
 			</Stack.Navigator>
 		</MeasurementValueProvider>
 	);

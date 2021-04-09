@@ -5,7 +5,7 @@ import { RenderItemParams } from 'react-native-draggable-flatlist';
 
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { MeasurementType, toggleVisibility, useDispatch } from '@store/core';
+import { MeasurementType, toggleMeasurementVisibility, useDispatch } from '@store/core';
 import { Typography } from '@design/core';
 
 interface Props {
@@ -14,31 +14,29 @@ interface Props {
 	navigation: MeasurementsScreenProps<'List'>['navigation'];
 }
 
-export default function ListItem({ object, navigation, drag }: Props): React.ReactElement {
+export default function ListItem({ object, drag }: Props): React.ReactElement {
 	const dispatch = useDispatch();
 	const { name, title, visible } = object;
 
 	return (
 		<View style={{ padding: 15, flexDirection: 'row', backgroundColor: theme.colors.card, opacity: visible ? 1 : 0.2 }}>
 			<View style={{ flex: 1 }}>
-				<TouchableOpacity onPress={() => alert(1)}>
-					<Typography bold variant="h6">
-						{title}
-					</Typography>
-				</TouchableOpacity>
+				<Typography bold variant="h6">
+					{title}
+				</Typography>
 			</View>
 
 			<TouchableOpacity
 				onPress={() => {
-					dispatch(toggleVisibility(name));
+					dispatch(toggleMeasurementVisibility(name));
 				}}
 			>
-				<View style={{ paddingRight: 15 }}>
+				<View style={{ paddingRight: 20 }}>
 					<MaterialIcons color={theme.colors.primary} name={visible ? 'visibility' : 'visibility-off'} size={25} />
 				</View>
 			</TouchableOpacity>
 			<TouchableOpacity onPressIn={drag}>
-				<View style={{ paddingRight: 5 }}>
+				<View style={{ paddingRight: 10 }}>
 					<MaterialIcons color={theme.colors.primary} name="drag-indicator" size={25} />
 				</View>
 			</TouchableOpacity>

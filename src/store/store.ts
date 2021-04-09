@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import { Actions, SET_TYPES, TOGGLE_VISIBILITY } from './actions';
+import { Actions, ADD_MEASUREMENT_VALUE, SET_TYPES, TOGGLE_VISIBILITY } from './actions';
 import { RootStore } from './types';
 import { measurement } from './staticData';
 
@@ -20,6 +20,19 @@ const cartItemsReducer = (state: RootStore['measurements'] = measurement, action
 			});
 
 			return { ...state, types };
+		}
+
+		case ADD_MEASUREMENT_VALUE: {
+			return {
+				...state,
+				data: {
+					...state.data,
+					[action.payload.typeName]: [
+						{ ...action.payload.data, id: state.data[action.payload.typeName].length + 2 },
+						...state.data[action.payload.typeName],
+					],
+				},
+			};
 		}
 	}
 

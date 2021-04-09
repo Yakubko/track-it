@@ -18,4 +18,4 @@ export interface MeasurementsContext {
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-export type MeasurementFormObject = WithOptional<MeasurementData, 'id' | 'value'>;
+export type MeasurementFormObject = WithOptional<MeasurementData, 'id'>;
