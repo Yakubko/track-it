@@ -7,20 +7,21 @@ import Animated from 'react-native-reanimated';
 import { theme } from '@constants/theme';
 
 interface Props {
-	children: React.ReactNode;
+	children: React.ReactElement;
+	header?: () => React.ReactElement;
 	snapTo: number;
 	heights: number[];
 	onClose: () => void;
 }
 
-export default function BottomSheet({ snapTo, children, heights, onClose }: Props): React.ReactElement {
+export default function BottomSheet({ snapTo, children, heights, header, onClose }: Props): React.ReactElement {
 	const [overlay, setOverlay] = useState(snapTo !== heights.length);
 	const sheetRef = React.useRef<BottomSheetOriginal>(null);
 
 	useFocusEffect(
 		React.useCallback(() => {
 			return () => {
-				sheetRef.current?.snapTo(1);
+				sheetRef.current?.snapTo(heights.length);
 			};
 		}, [])
 	);
@@ -31,13 +32,18 @@ export default function BottomSheet({ snapTo, children, heights, onClose }: Prop
 
 	const fall = new Animated.Value(0.4);
 
-	const renderHeader = () => (
-		<View style={styles.header}>
-			<View style={styles.panelHeader}>
-				<View style={styles.panelHandle} />
-			</View>
-		</View>
-	);
+	const RenderHeader = function RenderHeader(): React.ReactElement {
+		return (
+			<>
+				<View style={styles.header}>
+					<View style={styles.panelHeader}>
+						<View style={styles.panelHandle} />
+					</View>
+					{header ? header() : null}
+				</View>
+			</>
+		);
+	};
 
 	return (
 		<>
@@ -55,7 +61,7 @@ export default function BottomSheet({ snapTo, children, heights, onClose }: Prop
 					onClose();
 				}}
 				snapPoints={[...heights, 0]}
-				renderHeader={renderHeader}
+				renderHeader={RenderHeader}
 				renderContent={() => children}
 			/>
 			{overlay ? (

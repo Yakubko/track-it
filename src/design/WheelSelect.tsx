@@ -110,6 +110,7 @@ export default function WheelSelect<Type>({
 	return (
 		<View style={wrapperStyle}>
 			<VirtualizedList<Type>
+				style={{ paddingRight: 5, paddingLeft: 5 }}
 				ref={(ref) => (valuePicker = ref)}
 				data={dataSource}
 				getItem={getItem}

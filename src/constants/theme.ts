@@ -16,7 +16,7 @@ export const theme = {
 		success: '#007d51',
 		success2: '#04b97f',
 		warning: '#ffcf44',
-		danger: '#b50000',
+		danger: '#f44336',
 
 		// border: string;
 		// notification: string;
