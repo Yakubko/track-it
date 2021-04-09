@@ -5,7 +5,7 @@ import { RenderItemParams } from 'react-native-draggable-flatlist';
 
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { MeasurementType } from '@constants/data';
+import { MeasurementType } from '@store/core';
 import { Typography } from '@design/core';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
 
-export interface Root {
+export interface RootStore {
 	measurements: {
 		types: MeasurementType[];
 		data: Record<MeasurementType['name'], MeasurementData[]>;

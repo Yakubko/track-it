@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/core';
 
 import { List, Divider } from '@design/core';
-import { measurement } from '@constants/data';
+import { useSelector } from '@store/core';
 import { useMeasurementValue } from '@components/core';
 import { MeasurementsScreenProps } from '@constants/navigation';
 
@@ -13,6 +13,7 @@ import ListItem, { ListItemObject } from './ListItem';
 export { default as HeaderEdit } from './HeaderEdit';
 
 export default function Measurements() {
+	const measurement = useSelector((state) => state);
 	const navigation = useNavigation<MeasurementsScreenProps<'Measurements'>['navigation']>();
 	const { showMeasurement } = useMeasurementValue();
 

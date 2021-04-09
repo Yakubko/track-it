@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import moment from 'moment';
 
 import Typography from '@design/Typography';
-import { MeasurementData } from '@constants/data';
+import { MeasurementData } from '@store/core';
 
 interface Props {
 	from?: MeasurementData['date'];

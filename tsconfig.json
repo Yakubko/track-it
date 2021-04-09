@@ -12,7 +12,8 @@
 		"paths": {
 			"@components/*": ["src/components/*"],
 			"@constants/*": ["./src/constants/*"],
-			"@design/*": ["./src/design/*"]
+			"@design/*": ["./src/design/*"],
+			"@store/*": ["./src/store/*"]
 		}
 	}
 }

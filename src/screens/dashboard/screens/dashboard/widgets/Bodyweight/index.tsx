@@ -5,11 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { theme } from '@constants/theme';
 import { RootScreenProps } from '@constants/navigation';
 import { Card, Typography, Divider, AreaChart } from '@design/core';
-import { measurement } from '@constants/data';
+import { useSelector } from '@store/core';
 
 export default function Bodyweight() {
+	const data2 = useSelector((state) => state.data);
 	const navigation = useNavigation<RootScreenProps['navigation']>();
-	const data = measurement.data.bodyweight.map((item) => item.value);
+	const data = data2.bodyweight.map((item) => item.value);
 
 	const [lastWeight, previousWeight] = [data[0], data[1]];
 	let differenceWeight = lastWeight - previousWeight;
@@ -22,7 +23,7 @@ export default function Bodyweight() {
 
 	return (
 		<Card>
-			<AreaChart data={measurement.data.bodyweight} />
+			<AreaChart data={data2.bodyweight} />
 			<TouchableOpacity onPress={handlePress}>
 				<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 					<View style={{ width: '50%' }}>

@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import moment from 'moment';
 
 import { theme } from '@constants/theme';
-import { MeasurementType } from '@constants/data';
+import { MeasurementType } from '@store/core';
 import { Button, Calendar, Divider, Typography } from '@design/core';
 
 import { MeasurementFormObject } from '../types';

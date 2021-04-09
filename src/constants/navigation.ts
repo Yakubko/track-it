@@ -1,7 +1,8 @@
 import { NavigatorScreenParams } from '@react-navigation/core';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { StackScreenProps } from '@react-navigation/stack';
-import { MeasurementType } from './data';
+
+import { MeasurementType } from '@store/core';
 
 export type DashboardParamList = {
 	Dashboard: undefined;

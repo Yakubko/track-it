@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import moment from 'moment';
 
 import { BottomSheet as BottomSheetDesign, Divider, Typography } from '@design/core';
-import { measurement } from '@constants/data';
+import { useSelector } from '@store/core';
 
 import { MeasurementValue, MeasurementFormObject } from './types';
 import MeasurementForm from './Form';
@@ -14,8 +14,10 @@ interface Props {
 }
 
 export default function BottomSheet({ measurementValue, setMeasurementValue }: Props): React.ReactElement {
+	const types = useSelector((state) => state.types);
+
 	const [snapTo, setSnapTo] = useState<number>(0);
-	const typeObject = measurement.types.find((item) => item.name === measurementValue?.type);
+	const typeObject = types.find((item) => item.name === measurementValue?.type);
 	const heights = [400, 490];
 
 	if (!measurementValue) return <></>;

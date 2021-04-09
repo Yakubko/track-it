@@ -6,15 +6,16 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 
 import { Divider } from '@design/core';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { measurement } from '@constants/data';
+import { useSelector } from '@store/core';
 
 import ListItem from './ListItem';
 
 export { default as HeaderAdd } from './HeaderAdd';
 
 export default function List(): React.ReactElement {
+	const types = useSelector((state) => state.types);
 	const insets = useSafeAreaInsets();
-	const [data, setData] = useState(measurement.types);
+	const [data, setData] = useState(types);
 	const navigation = useNavigation<MeasurementsScreenProps<'List'>['navigation']>();
 
 	return (

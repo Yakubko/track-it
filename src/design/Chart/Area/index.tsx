@@ -4,7 +4,7 @@ import { AreaChart, Grid, YAxis } from 'react-native-svg-charts';
 import * as scale from 'd3-scale';
 import * as shape from 'd3-shape';
 
-import { MeasurementData } from '@constants/data';
+import { MeasurementData } from '@store/core';
 
 import Gradient from './Gradient';
 import Timeline from './Timeline';

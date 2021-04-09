@@ -5,12 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Divider, Typography, List, AreaChart } from '@design/core';
 import { useMeasurementValue } from '@components/core';
-import { measurement } from '@constants/data';
+import { MeasurementsScreenProps } from '@constants/navigation';
+import { useSelector } from '@store/core';
 
 import ListItem, { ListItemObject } from './ListItem';
-import { MeasurementsScreenProps } from '@constants/navigation';
 
 export default function History() {
+	const measurement = useSelector((state) => state);
+
 	const route = useRoute<MeasurementsScreenProps<'History'>['route']>();
 	const { showMeasurement } = useMeasurementValue();
 	const type = measurement.types.find((item) => item.name === route.params?.measurementName);

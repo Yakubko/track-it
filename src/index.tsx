@@ -1,7 +1,10 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'react-redux';
 import { useFonts, Eczar_400Regular, Eczar_600SemiBold, RobotoCondensed_400Regular, RobotoCondensed_700Bold } from '@expo-google-fonts/dev';
 
+import store from './store/store';
 import AppDrawer from './drawer';
 
 export default function App() {
@@ -16,5 +19,10 @@ export default function App() {
 		return <AppLoading />;
 	}
 
-	return <AppDrawer />;
+	return (
+		<Provider store={store}>
+			<StatusBar style="light" />
+			<AppDrawer />
+		</Provider>
+	);
 }

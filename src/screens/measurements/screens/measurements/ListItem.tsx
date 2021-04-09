@@ -4,7 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { MeasurementData, MeasurementType } from '@constants/data';
+import { MeasurementData, MeasurementType } from '@store/core';
 import { Typography } from '@design/core';
 
 export interface ListItemObject extends MeasurementType {

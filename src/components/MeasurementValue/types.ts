@@ -1,4 +1,4 @@
-import { MeasurementData, MeasurementType } from '@constants/data';
+import { MeasurementData, MeasurementType } from '@store/core';
 import { Dispatch, SetStateAction } from 'react';
 
 interface MeasurementValueObject extends Partial<MeasurementData> {

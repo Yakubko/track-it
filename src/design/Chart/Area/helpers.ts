@@ -1,4 +1,4 @@
-import { MeasurementData } from '@constants/data';
+import { MeasurementData } from '@store/core';
 
 interface MinMax {
 	min: number;

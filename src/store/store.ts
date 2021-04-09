@@ -1,10 +1,9 @@
+import { createStore } from 'redux';
 import moment from 'moment';
 
-import { Root } from './types';
+import { RootStore } from './types';
 
-export * from './types';
-
-export const measurement: Root['measurements'] = {
+const measurement: RootStore['measurements'] = {
 	types: [
 		{ name: 'bodyweight', title: 'Bodyweight', unite: 'kg', visible: true },
 		{ name: 'shoulders', title: 'Shoulders', unite: 'cm', visible: true },
@@ -71,3 +70,11 @@ export const measurement: Root['measurements'] = {
 		calf_left: [],
 	},
 };
+
+const cartItemsReducer = (state = measurement) => {
+	return state;
+};
+
+const store = createStore(cartItemsReducer);
+
+export default store;
