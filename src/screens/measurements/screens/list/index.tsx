@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/core';
@@ -6,16 +6,16 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 
 import { Divider } from '@design/core';
 import { MeasurementsScreenProps } from '@constants/navigation';
-import { useSelector } from '@store/core';
+import { useSelector, useDispatch, setTypes } from '@store/core';
 
 import ListItem from './ListItem';
 
 export { default as HeaderAdd } from './HeaderAdd';
 
 export default function List(): React.ReactElement {
-	const types = useSelector((state) => state.types);
+	const dispatch = useDispatch();
+	const data = useSelector((state) => state.types);
 	const insets = useSafeAreaInsets();
-	const [data, setData] = useState(types);
 	const navigation = useNavigation<MeasurementsScreenProps<'List'>['navigation']>();
 
 	return (
@@ -32,7 +32,7 @@ export default function List(): React.ReactElement {
 					);
 				}}
 				keyExtractor={(item) => item.name}
-				onDragEnd={({ data }) => setData(data)}
+				onDragEnd={({ data }) => dispatch(setTypes(data))}
 			/>
 		</SafeAreaView>
 	);

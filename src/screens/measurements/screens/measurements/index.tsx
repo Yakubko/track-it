@@ -13,29 +13,33 @@ import ListItem, { ListItemObject } from './ListItem';
 export { default as HeaderEdit } from './HeaderEdit';
 
 export default function Measurements() {
-	const measurement = useSelector((state) => state);
+	const items: ListItemObject[] = useSelector((state) => {
+		return state.types
+			.filter((item) => item.visible)
+			.map((item) => {
+				let value: ListItemObject['value'];
+				let previousValueDiff: ListItemObject['previousValueDiff'];
+				let time: ListItemObject['time'];
+				const lastValue = state.data[item.name][0];
+
+				if (lastValue) {
+					[value, time] = [lastValue.value, lastValue.date];
+
+					const previousValue = state.data[item.name][1];
+					if (previousValue) {
+						previousValueDiff = Math.round((lastValue.value - previousValue.value) * 10) / 10;
+					}
+				}
+
+				return { ...item, value, previousValueDiff, time };
+			});
+	});
 	const navigation = useNavigation<MeasurementsScreenProps<'Measurements'>['navigation']>();
 	const { showMeasurement } = useMeasurementValue();
 
 	const handlePress = (item: ListItemObject) => {
 		showMeasurement({ type: item.name, value: item.value });
 	};
-
-	const items: ListItemObject[] = measurement.types.map((item) => {
-		let value: ListItemObject['value'];
-		let previousValueDiff: ListItemObject['previousValueDiff'];
-		let time: ListItemObject['time'];
-		const lastValue = measurement.data[item.name][0];
-		if (lastValue) {
-			[value, time] = [lastValue.value, lastValue.date];
-
-			const previousValue = measurement.data[item.name][1];
-			if (previousValue) {
-				previousValueDiff = Math.round((lastValue.value - previousValue.value) * 10) / 10;
-			}
-		}
-		return { ...item, value, previousValueDiff, time };
-	});
 
 	return (
 		<ScrollView>
