@@ -10,8 +10,8 @@ const Stack = createStackNavigator<ChallengesParamList>();
 
 export default function ChallengesStack() {
 	return (
-		<Stack.Navigator initialRouteName="Challenges" screenOptions={{ header: Header }}>
-			<Stack.Screen name="Challenges" component={Challenges} />
+		<Stack.Navigator initialRouteName="Challenges">
+			<Stack.Screen name="Challenges" component={Challenges} options={{ header: (props) => <Header {...props} menu /> }} />
 		</Stack.Navigator>
 	);
 }

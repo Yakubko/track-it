@@ -16,6 +16,7 @@ export type ChallengesNavigationProp = StackScreenProps<ChallengesParamList>;
 export type MeasurementsParamList = {
 	Measurements: undefined;
 	History: { headerTitle: string; measurementName: MeasurementType['name'] };
+	EditList: undefined;
 };
 export type MeasurementsScreenProps<RouteName extends keyof MeasurementsParamList> = StackScreenProps<MeasurementsParamList, RouteName>;
 

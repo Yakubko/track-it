@@ -4,11 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/core';
 
 import { List, Divider } from '@design/core';
-import { measurement, MeasurementType } from '@constants/data';
+import { measurement } from '@constants/data';
 import { useMeasurementValue } from '@components/core';
 import { MeasurementsScreenProps } from '@constants/navigation';
 
 import ListItem, { ListItemObject } from './ListItem';
+
+export { default as HeaderEdit } from './HeaderEdit';
 
 export default function Measurements() {
 	const navigation = useNavigation<MeasurementsScreenProps<'Measurements'>['navigation']>();
@@ -36,7 +38,7 @@ export default function Measurements() {
 
 	return (
 		<ScrollView>
-			<SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
+			<SafeAreaView edges={['bottom']}>
 				<List>
 					{items.map((item, index) => {
 						return (

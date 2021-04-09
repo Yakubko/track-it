@@ -10,8 +10,8 @@ const Stack = createStackNavigator<DashboardParamList>();
 
 export default function DashboardStack() {
 	return (
-		<Stack.Navigator initialRouteName="Dashboard" screenOptions={{ header: Header }}>
-			<Stack.Screen name="Dashboard" component={Dashboard} />
+		<Stack.Navigator initialRouteName="Dashboard">
+			<Stack.Screen name="Dashboard" component={Dashboard} options={{ header: (props) => <Header {...props} menu /> }} />
 		</Stack.Navigator>
 	);
 }
