@@ -25,6 +25,7 @@ export interface MeasurementType {
 		| 'calf_left';
 	title: string;
 	unite: 'cm' | 'kg';
+	visible: boolean;
 }
 
 export interface MeasurementData {

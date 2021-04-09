@@ -25,7 +25,7 @@ export default function ListItem({ object, onPress, navigation }: Props): React.
 	const renderTime = time ? (
 		<Typography style={{ color: theme.colors.warning }}>{time ? time.fromNow() : '-'}</Typography>
 	) : (
-		<Typography>None data</Typography>
+		<Typography>No data</Typography>
 	);
 
 	const renderValue = value ? (
