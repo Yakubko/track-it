@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { RenderItemParams } from 'react-native-draggable-flatlist';
+import * as Haptics from 'expo-haptics';
 
 import { theme } from '@constants/theme';
 import { MeasurementsScreenProps } from '@constants/navigation';
@@ -35,8 +36,13 @@ export default function ListItem({ object, drag }: Props): React.ReactElement {
 					<MaterialIcons color={theme.colors.primary} name={visible ? 'visibility' : 'visibility-off'} size={25} />
 				</View>
 			</TouchableOpacity>
-			<TouchableOpacity onPressIn={drag}>
-				<View style={{ paddingRight: 10 }}>
+			<TouchableOpacity
+				onPressIn={() => {
+					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+					return drag();
+				}}
+			>
+				<View style={{ paddingRight: 16 }}>
 					<MaterialIcons color={theme.colors.primary} name="drag-indicator" size={25} />
 				</View>
 			</TouchableOpacity>

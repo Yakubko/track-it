@@ -48,7 +48,7 @@ export default function Value({ value, onSelect }: Props): React.ReactElement {
 								fontSize: 40,
 								color: isSelected ? theme.colors.primary : theme.colors.grey,
 								textAlign: 'right',
-								width: 65,
+								width: 70,
 							}}
 						>
 							{item}

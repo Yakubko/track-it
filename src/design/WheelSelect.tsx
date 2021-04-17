@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, StyleProp, View, ViewStyle, VirtualizedList, VirtualizedListProps } from 'react-native';
+import * as Haptics from 'expo-haptics';
 
 import Typography from './Typography';
 
@@ -22,15 +23,16 @@ export default function WheelSelect<Type>({
 	onChange,
 	renderItem: customRenderItem,
 }: Props<Type>): React.ReactElement {
+	const itemHeight = height / 3;
+	const wrapperStyle: StyleProp<ViewStyle> = { height };
+	const initialIndex = dataSource.findIndex((item) => item === initialValue);
+
 	let timer = 0;
 	let isScrollTo = false;
 	let dragStarted = false;
 	let momentumStarted = false;
 	let valuePicker: VirtualizedList<Type> | null;
-
-	const itemHeight = height / 3;
-	const wrapperStyle: StyleProp<ViewStyle> = { height };
-	const initialIndex = dataSource.findIndex((item) => item === initialValue);
+	let lastHapticIndex = initialIndex < 0 ? 0 : initialIndex;
 
 	const [selected, setSelected] = useState<number>(initialIndex < 0 ? 0 : initialIndex);
 	useEffect(() => {
@@ -91,6 +93,16 @@ export default function WheelSelect<Type>({
 		if (!isScrollTo && !momentumStarted && !dragStarted) scrollTo(event?.nativeEvent?.contentOffset?.y ?? 0);
 	};
 
+	const onScroll: VirtualizedListProps<Type>['onScroll'] = (event) => {
+		const contentOffsetY = event?.nativeEvent?.contentOffset?.y ?? 0;
+		let selectedIndex = Math.round(contentOffsetY / itemHeight);
+
+		if (lastHapticIndex === selectedIndex) return;
+		lastHapticIndex = selectedIndex;
+
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+	};
+
 	const onScrollBeginDrag: VirtualizedListProps<Type>['onScrollBeginDrag'] = () => {
 		dragStarted = true;
 		if (Platform.OS === 'ios') isScrollTo = false;
@@ -122,6 +134,8 @@ export default function WheelSelect<Type>({
 				showsVerticalScrollIndicator={false}
 				onMomentumScrollBegin={onMomentumScrollBegin}
 				onMomentumScrollEnd={onMomentumScrollEnd}
+				onScroll={onScroll}
+				scrollEventThrottle={5}
 				onScrollBeginDrag={onScrollBeginDrag}
 				onScrollEndDrag={onScrollEndDrag}
 			/>
