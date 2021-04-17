@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
+import { v4 } from 'react-native-uuid';
 
-import { Actions, ADD_MEASUREMENT_VALUE, SET_TYPES, TOGGLE_VISIBILITY } from './actions';
-import { RootStore } from './types';
+import { Actions, ADD_MEASUREMENT_VALUE, DELETE_MEASUREMENT_VALUE, SET_TYPES, TOGGLE_VISIBILITY } from './actions';
+import { MeasurementData, RootStore } from './types';
 import { measurement } from './staticData';
 
 const cartItemsReducer = (state: RootStore['measurements'] = measurement, action: Actions): RootStore['measurements'] => {
@@ -23,14 +24,38 @@ const cartItemsReducer = (state: RootStore['measurements'] = measurement, action
 		}
 
 		case ADD_MEASUREMENT_VALUE: {
+			let object: MeasurementData | null = {
+				...action.payload.data,
+				id: action.payload.data.id ?? (v4() as string),
+			};
+
+			let newMeasurementData = [...state.data[action.payload.typeName]];
+			if (newMeasurementData.length) {
+				newMeasurementData = newMeasurementData.filter(
+					(value) =>
+						!(action.payload.data.id && value.id === action.payload.data.id) &&
+						value.date.format('YYYY-MM-DD') !== action.payload.data.date.format('YYYY-MM-DD')
+				);
+			}
+
+			newMeasurementData.push(object);
+			newMeasurementData.sort((a, b) => -1 * a.date.diff(b.date));
+
 			return {
 				...state,
 				data: {
 					...state.data,
-					[action.payload.typeName]: [
-						{ ...action.payload.data, id: state.data[action.payload.typeName].length + 2 },
-						...state.data[action.payload.typeName],
-					],
+					[action.payload.typeName]: newMeasurementData,
+				},
+			};
+		}
+
+		case DELETE_MEASUREMENT_VALUE: {
+			return {
+				...state,
+				data: {
+					...state.data,
+					[action.payload.typeName]: state.data[action.payload.typeName].filter((item) => item.id !== action.payload.id),
 				},
 			};
 		}

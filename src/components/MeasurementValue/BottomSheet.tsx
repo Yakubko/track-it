@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import moment from 'moment';
 
 import { BottomSheet as BottomSheetDesign, Divider, Typography } from '@design/core';
-import { useSelector, useDispatch, addMeasurementValue } from '@store/core';
+import { useSelector, useDispatch, addMeasurementValue, deleteMeasurementValue } from '@store/core';
 
 import { MeasurementValue, MeasurementFormObject } from './types';
 import MeasurementForm from './Form';
@@ -36,7 +36,10 @@ export default function BottomSheet({ measurementValue, setMeasurementValue }: P
 	};
 
 	const handleDelete = (value: MeasurementFormObject) => {
-		console.log(value);
+		if (value.id) {
+			dispatch(deleteMeasurementValue(typeObject.name, value.id));
+		}
+		setMeasurementValue(null);
 	};
 
 	const renderHeader = (): React.ReactElement => {

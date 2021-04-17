@@ -33,4 +33,19 @@ export function addMeasurementValue(
 	return { type: ADD_MEASUREMENT_VALUE, payload: { typeName, data } };
 }
 
-export type Actions = SetTypes | ToggleMeasurementVisibility | AddMeasurementValue;
+export const DELETE_MEASUREMENT_VALUE = 'DELETE_MEASUREMENT_VALUE' as const;
+export interface DeleteMeasurementValue {
+	type: typeof DELETE_MEASUREMENT_VALUE;
+	payload: {
+		typeName: MeasurementType['name'];
+		id: MeasurementData['id'];
+	};
+}
+export function deleteMeasurementValue(
+	typeName: DeleteMeasurementValue['payload']['typeName'],
+	id: DeleteMeasurementValue['payload']['id']
+): DeleteMeasurementValue {
+	return { type: DELETE_MEASUREMENT_VALUE, payload: { typeName, id } };
+}
+
+export type Actions = SetTypes | ToggleMeasurementVisibility | AddMeasurementValue | DeleteMeasurementValue;

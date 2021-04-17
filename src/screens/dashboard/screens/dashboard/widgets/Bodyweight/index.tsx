@@ -8,9 +8,9 @@ import { Card, Typography, Divider, AreaChart } from '@design/core';
 import { useSelector } from '@store/core';
 
 export default function Bodyweight() {
-	const data2 = useSelector((state) => state.data);
+	const bodyweight = useSelector((state) => state.data.bodyweight);
 	const navigation = useNavigation<RootScreenProps['navigation']>();
-	const data = data2.bodyweight.map((item) => item.value);
+	const data = bodyweight.map((item) => item.value);
 
 	const [lastWeight, previousWeight] = [data[0], data[1]];
 	let differenceWeight = lastWeight - previousWeight;
@@ -23,7 +23,7 @@ export default function Bodyweight() {
 
 	return (
 		<Card>
-			<AreaChart data={data2.bodyweight} />
+			<AreaChart data={bodyweight} />
 			<TouchableOpacity onPress={handlePress}>
 				<View style={{ padding: 10, paddingBottom: 5, flexDirection: 'row' }}>
 					<View style={{ width: '50%' }}>

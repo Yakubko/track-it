@@ -29,7 +29,7 @@ export interface MeasurementType {
 }
 
 export interface MeasurementData {
-	id: number;
+	id: string;
 	date: Moment;
 	value: number;
 }
