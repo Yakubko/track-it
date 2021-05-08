@@ -15,5 +15,6 @@
 			"@design/*": ["./src/design/*"],
 			"@store/*": ["./src/store/*"]
 		}
-	}
+	},
+	"extends": "expo/tsconfig.base"
 }
