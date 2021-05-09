@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { v4 } from 'react-native-uuid';
+import uuid from 'react-native-uuid';
 
 import { Actions, ADD_MEASUREMENT_VALUE, DELETE_MEASUREMENT_VALUE, SET_TYPES, TOGGLE_VISIBILITY } from './actions';
 import { MeasurementData, RootStore } from './types';
@@ -26,7 +26,7 @@ const cartItemsReducer = (state: RootStore['measurements'] = measurement, action
 		case ADD_MEASUREMENT_VALUE: {
 			let object: MeasurementData | null = {
 				...action.payload.data,
-				id: action.payload.data.id ?? (v4() as string),
+				id: action.payload.data.id ?? (uuid.v4() as string),
 			};
 
 			let newMeasurementData = [...state.data[action.payload.typeName]];

@@ -4,7 +4,7 @@
 		"slug": "track-it",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon4.png",
+		"icon": "./assets/icon.png",
 		"splash": {
 			"image": "./assets/splash.png",
 			"resizeMode": "contain",
@@ -15,8 +15,7 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"bundleIdentifier": "Jakub",
-			"buildNumber": "1.0.0"
+			"supportsTablet": true
 		},
 		"android": {
 			"adaptiveIcon": {
